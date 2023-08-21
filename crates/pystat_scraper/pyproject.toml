@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "pystat_scraper_python"
+version = "0.1.0"
+description = "stats for python"
+authors = ["mgbvox <mgbvox@gmail.com>"]
+readme = "README.md"
+
+packages = [
+    {include="pystat_scraper_python", from="python"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = {extras = ["lxml"], version = "^2.0.3"}
+lxml = "^4.9.3"
+pytest-asyncio = "^0.21.1"
+aiohttp = "^3.8.5"
+pygithub = "^1.59.1"
+
+
+[tool.poetry.scripts]
+cli = "pystat_scraper_python.main:main"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+jupyterlab = "^4.0.5"
+black = {extras = ["jupyter"], version = "^23.7.0"}
+ruff = "^0.0.285"
+mypy = "^1.5.1"
+types-requests = "^2.31.0.2"
+pytest = "^7.4.0"
+
+
+[tool.mypy]
+enable_recursive_aliases = true
+
+[tool.ruff]
+select = ['ALL']
+ignore = [
+    "FA",
+    "T201",
+    "D211",
+    "D212",
+    "D407",
+]
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
